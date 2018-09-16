@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>In-class Exercises | Methods 3</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">&larr; Methods 3</a>
+                <h1>In-class Exercises</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: Geoprocessing</h2>
+                <ol>
+                    <li>Download <a href="data/week4data.zip">this class's data</a>.</li>
+                    <li>Clip <strong>nys_census_tracts</strong> to the <strong>Borough Boundaries</strong>. That is, remove the parts of the tracts that are outside of the borough boundaries.</li>
+                    <li>Select resulting census tracts in a selected borough.</li>
+                    <li>Buffer <strong>Graffiti_Locations</strong> by 500 feet.</li>
+                    <li>How many <strong>Public_School_locations</strong> are within 500 feet of a point in <strong>Graffiti_Locations</strong>? Use <strong>Vector &gt; Analysis Tools &gt; Select by location</strong>.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: Attribute Joins</h2>
+                <ol>
+                    <li>Open the file <strong>Public_School_locations</strong> in QGIS.</li>
+                    <li>Open the CSV <strong>SAT_Results.csv</strong> in QGIS using the <strong>Add Delimited Text Layer</strong> tool.</li>
+                    <li>Attribute join the SAT results to the public schools. Use <strong>DBN</strong> from <strong>SAT_Results</strong>, <strong>ATS_CODE</strong> from the <strong>Public_School_locations</strong>.</li>
+                    <li>Style the schools using the joined data.</li>
+                    <li>Select only schools that successfully joined to the SAT results and save the joined layer as a new shapefile.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: Download census data</h2>
+                <ol>
+                    <li>Go to <a href="http://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml">American FactFinder</a>.</li>
+                    <li>Select <strong>Guided Search</strong>, then click <strong>get me started</strong>.</li>
+                    <li>Download data counting owners and renters:
+                        <ol>
+                            <li>Select <strong>I'm looking for information about housing</strong>.</li>
+                            <li>Expand <strong>Occupancy Characteristic</strong>.</li>
+                            <li>Click <strong>Owner/Renter (Tenure in Occupied Units) </strong>. Click <strong>Next</strong>.</li>
+                            <li>Under <strong>Select a geographic type</strong> select <strong>Census Tract</strong>.</li>
+                            <li>Select <strong>New York</strong>. You can skip "Select a county".</li>
+                            <li>Select <strong>All Census Tracts within New York</strong>.</li>
+                            <li>Click <strong>Add To Your Selections</strong>.</li>
+                            <li>Click <strong>Next</strong>.</li>
+                            <li>When asked if you're looking for data for a race or ethnic group, click <strong>Skip This Step</strong>.</li>
+                            <li>Now you should see a list of available tables. Select <strong>Tenure</strong> up at the top of the list.</li>
+                            <li>Now you should see the data you selected. Click <strong>Modify Table</strong> and <strong>Transpose Rows/Columns</strong>, which should flip the table vertically and give you more rows than columns.</li>
+                            <li>Finally, click <strong>Download</strong>, select <strong>Use</strong>, and <strong>OK</strong> without changing any options.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 4: Join census data</h2>
+                <ol>
+                    <li>First, prepare your data:
+                        <ol>
+                            <li>In Excel or some other spreadsheet program, open the owners and renters CSV downloaded in the previous part.</li>
+                            <li>Rename <code>HD01_VD01</code> to <code>total_households</code>.</li>
+                            <li>Rename <code>HD01_VD02</code> to <code>total_owners</code>.</li>
+                            <li>Rename <code>HD01_VD03</code> to <code>total_renters</code>.</li>
+                            <li>Delete row 2, which should contain <code>Id</code>, <code>Id2</code>, <code>Geography</code>, etc.</li>
+                            <li>Delete all columns that do not have headers that start with <code>GEO</code> and that we did not rename.</li>
+                        </ol>
+                        If it helps, this week's data contains an edited version of this CSV (in <strong>ACS_16_5YR_B25003</strong>).
+                    </li>
+                    <li>Open your the CSV in QGIS.</li>
+                    <li>Open your clipped NYC census tracts from Part 1 in QGIS.</li>
+                    <li>Join the CSV to the shapefile.</li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Methods 3</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>
