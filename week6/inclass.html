@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>In-class Exercises | Methods 3</title>
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya Sans' rel='stylesheet' type='text/css'>
+        <link href="../css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="../css/inclass.css" rel="stylesheet" />
+    </head>
+    <body>
+        <main>
+            <header>
+                <a href="..">&larr; Methods 3</a>
+                <h1>In-class Exercises</h1>
+            </header>
+
+            <section>
+                <h2>Part 1: Georeferencing</h2>
+                <ol>
+                    <li>Go to <a href="http://www.urbanreviewer.org/">Urban Reviewer</a>.</li>
+                    <li>Find an urban renewal plan with a map image on the right when you select it. If you have a hard time finding one with a scanned map, use <a href="http://www.urbanreviewer.org/#map=17/40.6911/-73.9629&plan=Pratt+Institute">Pratt Institute</a> or <a href="http://www.urbanreviewer.org/#map=16/40.7907/-73.9697&plan=West+Side">West Side</a>.</li>
+                    <li>Click on the image to make it larger, then right click on it and <strong>save as</strong> to save it to your computer.</li>
+                    <li>Open QGIS.</li>
+                    <li>Set the project's projection (CRS) to <strong>EPSG:3857</strong>. We do this because the base layer in the next step is in that projection.</li>
+                    <li>Using QuickMapServices, add a satellite base layer with labels. I would suggest the Google Hybrid layer.</li>
+                    <li>Zoom to the general area your image should be in.</li>
+                    <li>Enable <strong>Georeferencer GDAL</strong> in the plugins area of QGIS.</li>
+                    <li>Go to <strong>Raster &gt; Georeferencer &gt; Georeferencer</strong> to open the Georeferencer window.</li>
+                    <li>Go to <strong>File &gt; Open Raster</strong> and select the image you downloaded from Urban Reviewer.</li>
+                    <li>Add 3 or 4 ground control points:
+                        <ol>
+                            <li>Switch between the Georeferencer and map windows and find a common point between the two (generally a street corner will be best).</li>
+                            <li>Click the <strong>Add point</strong> button in the Georeferencer window.</li>
+                            <li>Click on the common point in the Georeferencer window.</li>
+                            <li>When prompted to <strong>Enter map coordinates</strong>, select the <strong>From map canvas</strong> button.</li>
+                            <li>Click on the common point on the map.</li>
+                        </ol>
+                    </li>
+                    <li>Once you are happy with the ground control points, click the <strong>Settings</strong> icon in the Georeferencer window.</li>
+                    <li>Set <strong>Transformation type</strong> to <strong>Thin plate spline</strong>.</li>
+                    <li>Set <strong>Target SRS</strong> to <strong>3857</strong> (the projection the reference map is in).</li>
+                    <li>Select a location to save to.</li>
+                    <li>Check <strong>Load in QGIS when done</strong>.</li>
+                    <li>Click <strong>Start Georeferencing</strong> in the Georeferencer window (looks like a play button).</li>
+                    <li>The Georeferenced image should show up on your map.</li>
+                    <li>Find a ground control point that doesn't line up as much as you would like.</li>
+                    <li>Delete the ground control point in the Georeferencer window.</li>
+                    <li>Add a replacement ground control point.</li>
+                    <li>Georeference it again&mdash;by default your georeferenced image will be overwritten, so change the destination in the georeferencer settings if you want to make a new file.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 2: the Field Calculator</h2>
+                <ol>
+                    <li>Download <a href="data/week6data.zip">today's data</a> if you haven't already.</li>
+                    <li>Open <strong>queens_census_tracts_joined</strong> in QGIS.</li>
+                    <li>We are going to use the Field Calculator and Refactor functions of QGIS to clean up the attribute table and perform some calculations on it.</li>
+                    <li>Use the field calculator to divide <strong>renters</strong> by <strong>households</strong>. Put the result in a field called <strong>p_renters</strong>. The expression should look like this:
+                        <pre><code>"renters" / "households"</code></pre>
+                    </li>
+                    <li>Use the field calculator to create a new field called <strong>medincome2</strong> that is <strong>med_income</strong> but an integer rather than text. This is tricky because some of the values in <strong>med_income</strong> cannot be converted to numbers. You'll need to use an expression like this:
+                        <pre><code>if( "med_income" = '-',
+    NULL,
+    to_int("med_income"))</code></pre>
+                    </li>
+                    <li>Refactor the attribute table to get rid of some fields we no longer need:
+                        <ul>
+                            <li><strong>owners</strong></li>
+                            <li><strong>renters</strong></li>
+                            <li><strong>med_income</strong></li>
+                        </ul>
+                        and rename <strong>medincome2</strong> to <strong>med_income</strong>.
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Part 3: Modeling</h2>
+                <p>In this part we will use the data we worked with in the previous part to make a simple model. We will attempt to make a model that can predict where there will be more pressure on renters due to Airbnb listings in their neighborhoods.</p>
+                <ol>
+                    <li>Continue with the file from the previous part.</li>
+                    <li>Open the Airbnb listings shapefile in <strong>airbnb_listings_20181001_queens</strong> and use <strong>Count points in polygons</strong> to determine how many Airbnb listings exist in each census tract.</li>
+                    <li>Using the field calculator, create new fields. The new fields should scale each field using <code>scale_linear</code>. For example, <strong>med_income</strong> has a minimum value of 15474, maximum value of 151964, so we use this expression in the field calculator:
+                        <pre><code>scale_linear("med_income", 
+    15474, 151964,
+    0, 1)</code></pre>
+                        When you scale each, add an <strong>s_</strong> at the beginning of the new field name. For example, <strong>med_income</strong> becomes <strong>s_med_inco</strong> (since you can only use 10 characters in a name). Follow a similar process for <strong>p_renters</strong> (created in the previous part) and <strong>NUMPOINTS</strong> (created when we calculated the Airbnb listings per tract).
+                    </li>
+                    <li>Create a graduated style for the tracts. For the column expression, add each of the scaled fields together.</li>
+                </ol>
+            </section>
+
+            <footer>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Methods 3</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </footer>
+        </main>
+    </body>
+</html>
