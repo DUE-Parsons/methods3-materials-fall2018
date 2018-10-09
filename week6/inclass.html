@@ -48,47 +48,6 @@
                 </ol>
             </section>
 
-            <section>
-                <h2>Part 2: the Field Calculator</h2>
-                <ol>
-                    <li>Download <a href="data/week6data.zip">today's data</a> if you haven't already.</li>
-                    <li>Open <strong>queens_census_tracts_joined</strong> in QGIS.</li>
-                    <li>We are going to use the Field Calculator and Refactor functions of QGIS to clean up the attribute table and perform some calculations on it.</li>
-                    <li>Use the field calculator to divide <strong>renters</strong> by <strong>households</strong>. Put the result in a field called <strong>p_renters</strong>. The expression should look like this:
-                        <pre><code>"renters" / "households"</code></pre>
-                    </li>
-                    <li>Use the field calculator to create a new field called <strong>medincome2</strong> that is <strong>med_income</strong> but an integer rather than text. This is tricky because some of the values in <strong>med_income</strong> cannot be converted to numbers. You'll need to use an expression like this:
-                        <pre><code>if( "med_income" = '-',
-    NULL,
-    to_int("med_income"))</code></pre>
-                    </li>
-                    <li>Refactor the attribute table to get rid of some fields we no longer need:
-                        <ul>
-                            <li><strong>owners</strong></li>
-                            <li><strong>renters</strong></li>
-                            <li><strong>med_income</strong></li>
-                        </ul>
-                        and rename <strong>medincome2</strong> to <strong>med_income</strong>.
-                    </li>
-                </ol>
-            </section>
-
-            <section>
-                <h2>Part 3: Modeling</h2>
-                <p>In this part we will use the data we worked with in the previous part to make a simple model. We will attempt to make a model that can predict where there will be more pressure on renters due to Airbnb listings in their neighborhoods.</p>
-                <ol>
-                    <li>Continue with the file from the previous part.</li>
-                    <li>Open the Airbnb listings shapefile in <strong>airbnb_listings_20181001_queens</strong> and use <strong>Count points in polygons</strong> to determine how many Airbnb listings exist in each census tract.</li>
-                    <li>Using the field calculator, create new fields. The new fields should scale each field using <code>scale_linear</code>. For example, <strong>med_income</strong> has a minimum value of 15474, maximum value of 151964, so we use this expression in the field calculator:
-                        <pre><code>scale_linear("med_income", 
-    15474, 151964,
-    0, 1)</code></pre>
-                        When you scale each, add an <strong>s_</strong> at the beginning of the new field name. For example, <strong>med_income</strong> becomes <strong>s_med_inco</strong> (since you can only use 10 characters in a name). Follow a similar process for <strong>p_renters</strong> (created in the previous part) and <strong>NUMPOINTS</strong> (created when we calculated the Airbnb listings per tract).
-                    </li>
-                    <li>Create a graduated style for the tracts. For the column expression, add each of the scaled fields together.</li>
-                </ol>
-            </section>
-
             <footer>
                 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Methods 3</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://ebrelsford.github.io/" property="cc:attributionName" rel="cc:attributionURL">Eric Brelsford</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
             </footer>
