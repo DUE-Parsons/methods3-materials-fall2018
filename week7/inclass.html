@@ -50,7 +50,7 @@
                             <li>First, <strong>med_income</strong> has a minimum value of 15474, maximum value of 151964, so we use this expression in the field calculator:
                         <pre><code>scale_linear("med_income", 
     15474, 151964,
-    0, 1)</code></pre>
+    1, 0)</code></pre>
                         Add an <strong>s_</strong> at the beginning of the new field name to indicate that it is scaled. In this case, <strong>med_income</strong> becomes <strong>s_income</strong> (since you can only use 10 characters in a name). <strong>s_income</strong> should be a decimal number field with length 10 and precision 8.
                             </li>
                             <li>Follow a similar process for <strong>NUMPOINTS</strong> (created when we calculated the Airbnb listings per tract):
