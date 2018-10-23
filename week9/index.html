@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class 9 | Methods 3</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+        <link href='https://fonts.googleapis.com/css?family=Arvo|Alegreya+Sans' rel='stylesheet' type='text/css'>
+
+        <link href="../css/pig.css" rel="stylesheet" type="text/css" />
+        <link href="../css/base.css" rel="stylesheet" />
+
+        <script src="../js/hammer.min.js"></script>
+        <script src="../js/pig.js"></script>
+    </head>
+    <body>
+
+        <div class="slide">
+            <p>Welcome to Methods 3, Lecture 9</p>
+            <p>This is a web page that can be viewed as slides.</p>
+            <p>→ to move forward</p>
+            <p>← to go back</p>
+        </div>
+
+        <div class="slide">
+            <h1>Methods 3</h1>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <pre><code>#layer {
+    marker-fill: #ff307a;
+    marker-line-color: #FFF;
+    marker-line-width: 0.25;
+    marker-line-opacity: 0.4;
+    marker-width: 2;
+    marker-allow-overlap: true;
+}</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>#layer {
+    marker-width: 3;
+    ...
+    [zoom &gt;= 10] {
+        marker-width: 8;
+    }
+    [zoom &gt;= 16] {
+        marker-width: 15;
+    }
+}</code></pre>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/assignment-grace.png);">
+            <span style="background: white; float: right;">Grace</span>
+            <a class="source" href="https://thenewschool.carto.com/u/gpaik/builder/ecdba54e-ad1f-43d2-abfe-7476a2243656/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B39.28452290725194%2C-76.6483497619629%5D%2C%22sw%22%3A%5B39.315607080870166%2C-76.56904220581056%5D%2C%22center%22%3A%5B39.30006671942496%2C-76.60869598388673%5D%2C%22zoom%22%3A15%7D%7D">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-kevin.png);">
+            <span style="background: white; float: right;">Kevin</span>
+            <a class="source" href="https://thenewschool.carto.com/u/capuk715/builder/a921053e-c8ff-408c-a5b3-1de19b04af99/embed?state=%7B%22map%22%3A%7B%22ne%22%3A%5B51.04332991655578%2C-114.08063650131227%5D%2C%22sw%22%3A%5B51.04964333781332%2C-114.06080961227418%5D%2C%22center%22%3A%5B51.04649010730285%2C-114.07072842121126%5D%2C%22zoom%22%3A17%7D%7D">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/assignment-kevin-code.png);">
+            <span style="background: white; float: right;">Kevin</span>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide" style="background-image: url(img/mcd-0.png);">
+            <a class="source" href="https://www.arcgis.com/home/webmap/viewer.html?webmap=bf28f63b455d4ce187ea1c88f7b97982">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mcd-1.png);">
+            <a class="source" href="https://services1.arcgis.com/HbtZpOwBc7KKaziw/arcgis/rest/services/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mcd-2.png);">
+            <a class="source" href="https://www.arcgis.com/sharing/rest/content/items/48cd60ec4fe8449e9cf847b01e4907cf/data?f=json">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/mcd-2.png);">
+            <a class="source" href="https://www.arcgis.com/sharing/rest/content/items/48cd60ec4fe8449e9cf847b01e4907cf/data?f=json">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine.png);">
+            <a href="http://openrefine.org/" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-3.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-4.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/openrefine-json-5.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/qatar.png);">
+            <a class="source" href="https://mdpsqatar.maps.arcgis.com/apps/webappviewer/index.html?appid=87f9995a11e34f3bb9bd8d1df290816a">source</a>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>using SVG icons with Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nounproject.png);">
+            <a class="source" href="https://nounproject.com">nounproject.com</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/nounproject.png);">
+            <h2>find or make an SVG</h2>
+            <a class="source" href="https://nounproject.com">nounproject.com</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-svg-0.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-svg-1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-svg-2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-svg-3.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-svg-cartocss.png);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>customizing legends and popups</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-legend-html-example.png);">
+        </div>
+
+        <div class="slide">
+            <h2>HTML</h2>
+        </div>
+
+        <div class="slide">
+            <h2>HTML gives <em>content</em> and <em>structure</em> to web pages</h2>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;
+    &lt;a href="http://data.cityofnewyork.us"&gt;source&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;some text on a web page&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;</code></pre>
+            <p>
+                the paragraph <strong>opening tag</strong>
+            </p>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;</code></pre>
+            <p>
+                the paragraph <strong>opening tag</strong>
+            </p>
+            <p>
+                opening tags always start with
+            </p>
+            <pre><code>&lt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;</code></pre>
+            <p>
+                the paragraph <strong>opening tag</strong>
+            </p>
+            <p>
+                opening tags always start with
+            </p>
+            <pre><code>&lt;</code></pre>
+            <p>and end with</p>
+            <pre><code>&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;/p&gt;</code></pre>
+            <p>the paragraph <strong>closing tag</strong></p>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;/p&gt;</code></pre>
+            <p>the paragraph <strong>closing tag</strong></p>
+            <p>closing tags always start with</p>
+            <pre><code>&lt;/</code></pre>
+            <p>and end with</p>
+            <pre><code>&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;some text on a web page&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;a href="http://data.cityofnewyork.us"&gt;source&lt;/a&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>HTML in Carto</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-legend-html.png);">
+        </div>
+
+        <div class="slide">
+            <h2>you can add HTML and style it with CSS before and after Carto legends</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+        </div>
+
+        <div class="slide">
+            <h2>in popups, <code>{{}}</code> around a field name will be replaced by the value of that field for the feature you clicked</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+            <div style="background-color: rgba(255, 255, 255, 0.8);"><code>{{neighbourhood}}, {{neighbourhood_group}}</code></div>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-html.png);">
+            <div style="background-color: rgba(255, 255, 255, 0.8);">
+                <code>{{neighbourhood}}, {{neighbourhood_group}}</code>
+                <p>becomes</p>
+                <p>SoHo, Manhattan</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>you can use this to add links within Carto maps</h2>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;
+    &lt;a href="http://data.cityofnewyork.us"&gt;source&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>and in popups those links can change based on the clicked feature</h2>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;
+    &lt;a href="{{url}}"&gt;learn more&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;
+    &lt;a href="{{url}}"&gt;learn more&lt;/a&gt;
+&lt;/p&gt;</code></pre>
+            <h2>(if there is a field called <code>url</code>)<h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 1</a></h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>CSS</h2>
+        </div>
+
+        <div class="slide">
+            <h2>CSS</h2>
+            <p>makes things look nice</p>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p&gt;
+    some text on a web page
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;p style="font-size: 20px;"&gt;
+    some text on a web page
+&lt;/p&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/css-properties.png);">
+            <a class="source" href="http://www.htmldog.com/references/css/properties/">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/css-properties.png);">
+            <h2>similar to CartoCSS but just for webpages</h2>
+            <a class="source" href="http://www.htmldog.com/references/css/properties/">source</a>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;div class="CDB-infowindow"&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;div class="CDB-infowindow" style="color: green;"&gt;</code></pre>
+        </div>
+
+        <div class="slide">
+            <h2>add <em>style=""</em> in an opening tag</h2>
+        </div>
+
+        <div class="slide">
+            <h2><a href="inclass.html" target="_blank">in-class exercise, part 2</a></h2>
+        </div>
+
+        <div class="slide">
+            <h2>you can add images with HTML</h2>
+        </div>
+
+        <div class="slide">
+            <pre><code>&lt;img src="http://i.ytimg.com/cat.jpg" /&gt;</code></pre>
+        </div>
+
+        <div class="slide" style="background-image: url(img/carto-popup-image.png);">
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>if you want to learn a more about HTML and CSS, there are many free resources</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/codecademy.png);">
+            <a class="source" href="http://www.codecademy.com/tracks/web">codecademy.com/tracks/web</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/shayhowe.png);">
+            <a class="source" href="http://learn.shayhowe.com/html-css">learn.shayhowe.com/html-css</a>
+        </div>
+
+        <div class="slide">
+            <h2>if you take Advanced GIS we'll get into much more depth</h2>
+        </div>
+
+        <div class="slide intermission"></div>
+
+        <div class="slide">
+            <h2>Urban Reviewer</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/urban-reviewer-full.png);">
+            <a href="http://urbanreviewer.org" target="_blank">urban reviewer</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/596.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/596-signs.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/596-rockaways.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/edgemere-urban-renewal-park-streetview.png);">
+            <h2>
+                <a href="https://www.google.com/maps/place/Edgemere+Urban+Renewal+Park/@40.595588,-73.776975,3a,75y,172.62h,90t/data=!3m4!1e1!3m2!1sZgWcG17VxRvOezZpdWXGkA!2e0!4m6!1m3!3m2!1s0x0:0xae6844ceae037acd!2sEdgemere+Urban+Renewal+Park!3m1!1s0x0:0xae6844ceae037acd!6m1!1e1" target="_blank">Edgemere Urban Renewal Park</a>
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/edgemere-urban-renewal-park-signs.jpg);">
+            <a class="source" href="http://596acres.org/en/lot/4158370033/" target="_blank">
+                596 Acres
+            </a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/edgemere-urban-renewal-park-signs-zoom.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/edgemere-urban-renewal-park-signs-zoom.jpg);">
+            <h2>call Parks and say "where's our park?"</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/edgemere-urban-renewal-park.png);">
+            <h2>
+                <a href="https://www.google.com/maps/place/Edgemere+Urban+Renewal+Park/@40.595588,-73.776975,17z/data=!4m6!1m3!3m2!1s0x0:0xae6844ceae037acd!2sEdgemere+Urban+Renewal+Park!3m1!1s0x0:0xae6844ceae037acd" target="_blank">Edgemere Urban Renewal Park</a>
+            </h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/moses.jpg);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/fitzgerald-urban-renewal.jpg);">
+            <a class="source" href="https://muse.jhu.edu/book/11514">Fitzgerald</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/arverne-1968.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/arverne-satellite.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/arverne-curbed.jpg);">
+            <h2>today</h2>
+            <a class="source" href="http://kensinger.blogspot.com/">Nathan Kensinger</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/spura.jpg);">
+            <h2>today</h2>
+            <a class="source" href="http://www.nycedc.com/project/seward-park-mixed-use-development-project">NYC EDC</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/lincoln-center.jpg);">
+            <h2>today</h2>
+            <a class="source" href="http://performingartseducators.org/index.php/fourth-post/">Performing Arts Educators</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cadman-plaza.jpg);">
+            <h2>today</h2>
+            <a class="source" href="http://www.panoramio.com/photo/34791344">Panoramio</a>
+        </div>
+
+        <div class="slide">
+            <h2>let's map them!</h2>
+        </div>
+
+        <div class="slide">
+            <h2>we weren't the first to have this idea</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cdp1968.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cdp1968.png);">
+            <h2>Community Development Program Progress Report (1968)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/cdp1968-map.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cdp1968-map-zoom.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/cdp1968-arverne-map.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/atlas1984.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/atlas1984.png);">
+            <h2>Atlas of Urban Renewal (1984)</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/atlas1984-manhattan.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/atlas1984-e14th.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/atlas1984-e14th-zoom.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/foil-letter.png);">
+            <h2>FOIL</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/foil-paper.jpg);">
+            <h2>FOILed!</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/foil-letter-inspection.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/bronx-park-south-plan.JPG);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/bronx-park-south-plan-detail.JPG);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/plan-map.JPG);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/arverne-google-drive.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/crown-heights-google-drive.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/crown-heights-google-drive.png);">
+            <h2>thanks, volunteers!</h2>
+        </div>
+
+        <div class="slide" style="background-image: url(img/urbanreviewer_final_excel.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/bbl.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/disappointed.gif);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/urbanreviewer_final_excel_arrow.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/urbanreviewer_final_excel_arrow2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/tax-map.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/tax-map-zoom.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/nyc-shp.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/urban-reviewer-full.png);">
+            <a href="http://urbanreviewer.org" target="_blank">urban reviewer</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/seward-park.png);">
+            <a href="http://www.urbanreviewer.org/#map=17/40.7154/-73.9864&plan=Seward+Park" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/seward-park-data.png);">
+            <a href="https://github.com/596acres/urbanreviewer/blob/gh-pages/data/geojson/us/ny/nyc/Manhattan/Seward%20Park.geojson" class="source">source</a>
+        </div>
+
+        <div class="slide" style="background-image: url(img/still-vacant1.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/still-vacant2.png);">
+        </div>
+
+        <div class="slide" style="background-image: url(img/still-vacant3.png);">
+        </div>
+
+    </body>
+</html>
